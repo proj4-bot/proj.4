@@ -1004,6 +1004,7 @@ int pj_has_inverse(PJ *);
 
 char *pj_strdup(const char *str);
 const char PROJ_DLL *pj_get_release(void);
+const char PROJ_DLL *pj_get_version(void);
 void pj_acquire_lock(void);
 void pj_release_lock(void);
 

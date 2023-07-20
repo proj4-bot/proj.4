@@ -496,6 +496,11 @@ int main(int argc, char **argv) {
                 case 's': /* reverse output */
                     reverseout = 1;
                     continue;
+                case '-': /* long option */
+                    if (strcmp(*argv, "--version") == 0) {
+                        (void)printf("%s\n", pj_get_version());
+                        exit(0);
+                    }
                 default:
                     emess(1, "invalid option: -%c", *arg);
                     break;
