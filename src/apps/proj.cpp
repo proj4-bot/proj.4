@@ -501,6 +501,10 @@ int main(int argc, char **argv) {
                         (void)printf("%s\n", pj_get_version());
                         exit(0);
                     }
+                    else {
+                      emess(1, "invalid option: %s", *argv);
+                      break;
+                    }
                 default:
                     emess(1, "invalid option: -%c", *arg);
                     break;
