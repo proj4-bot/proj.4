@@ -498,7 +498,7 @@ int main(int argc, char **argv) {
                     continue;
                 case '-': /* long option */
                     if (strcmp(*argv, "--version") == 0) {
-                        (void)printf("%s\n", pj_get_version());
+                        (void)fprintf(stdout, "%s: %s\n", emess_dat.Prog_name, pj_get_version());
                         exit(0);
                     }
                     else {

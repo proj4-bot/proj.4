@@ -249,7 +249,7 @@ static const char usage[] = {
     "    --verbose         Alias for -v\n"
     "    --help            Alias for -h\n"
     "    --list            Alias for -l\n"
-    "    --version         Print version number\n"
+    "    --version         Print version\n"
     "--------------------------------------------------------------------------"
     "------\n"
     "Examples:\n"
@@ -267,7 +267,8 @@ static const char usage[] = {
 int main(int argc, char **argv) {
     int i;
     const char *longflags[] = {"v=verbose", "q=quiet", "h=help",
-                               "l=list",    "version", nullptr};
+                               "l=list",    "version",
+                               nullptr};
     const char *longkeys[] = {"o=output", nullptr};
     OPTARGS *o;
 
@@ -290,7 +291,7 @@ int main(int argc, char **argv) {
     }
 
     if (opt_given(o, "version")) {
-        fprintf(stdout, "%s: %s\n", o->progname, pj_get_release());
+        fprintf(stdout, "%s: %s\n", o->progname, pj_get_version());
         free(o);
         return 0;
     }

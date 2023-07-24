@@ -428,7 +428,10 @@ int main(int argc, char **argv) {
     /* process run line arguments */
     while (--argc > 0) { /* collect run line arguments */
         ++argv;
-        if (strcmp(*argv, "--area") == 0) {
+        if (strcmp(*argv, "--version") == 0) {
+            (void)fprintf(stdout, "%s: %s\n", emess_dat.Prog_name, pj_get_version());
+            exit(0);
+        } else if (strcmp(*argv, "--area") == 0) {
             ++argv;
             --argc;
             if (argc == 0) {

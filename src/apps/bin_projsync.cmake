@@ -1,4 +1,4 @@
-set(PROJSYNC_SRC projsync.cpp)
+set(PROJSYNC_SRC projsync.cpp emess.cpp)
 
 source_group("Source Files\\Bin" FILES ${PROJSYNC_SRC})
 

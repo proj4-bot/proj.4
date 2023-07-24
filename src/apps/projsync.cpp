@@ -38,6 +38,7 @@
 #include "filemanager.hpp"
 #include "proj.h"
 #include "proj_internal.h"
+#include "emess.h"
 
 #include "proj/internal/include_nlohmann_json.hpp"
 #include "proj/internal/internal.hpp"
@@ -75,6 +76,9 @@ class ParsingException : public std::exception {
     std::cerr << "          [--quiet | --verbose] [--dry-run] [--list-files]"
               << std::endl;
     std::cerr << "          [--no-version-filtering]" << std::endl;
+    std::cerr << "          [--version]" << std::endl;
+    std::cerr << "          [--release]" << std::endl;
+    std::cerr << "          [--short-version]" << std::endl;
     std::exit(1);
 }
 
@@ -115,6 +119,11 @@ int main(int argc, char *argv[]) {
 
     auto ctx = pj_get_default_ctx();
 
+    if ((emess_dat.Prog_name = strrchr(*argv, '/')) != nullptr)
+        ++emess_dat.Prog_name;
+    else
+        emess_dat.Prog_name = *argv;
+
     std::string targetDir;
     std::string endpoint(proj_context_get_url_endpoint(ctx));
     const std::string geojsonFile("files.geojson");
@@ -138,7 +147,12 @@ int main(int argc, char *argv[]) {
 
     for (int i = 1; i < argc; i++) {
         std::string arg(argv[i]);
-        if (arg == "--endpoint" && i + 1 < argc) {
+        if (arg == "--version")
+        {
+          std::cout << emess_dat.Prog_name << ": " << pj_get_version() << std::endl;
+          std::exit(0);
+        }
+        else if (arg == "--endpoint" && i + 1 < argc) {
             i++;
             endpoint = argv[i];
         } else if (arg == "--user-writable-directory") {

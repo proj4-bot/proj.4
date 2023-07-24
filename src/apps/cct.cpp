@@ -133,7 +133,7 @@ static const char usage[] = {
     "    --inverse         Alias for -I\n"
     "    --skip-lines      Alias for -s\n"
     "    --help            Alias for -h\n"
-    "    --version         Print version number\n"
+    "    --version         Print version\n"
     "--------------------------------------------------------------------------"
     "------\n"
     "Operator Specs:\n"
@@ -255,7 +255,8 @@ int main(int argc, char **argv) {
     proj_log_func(PJ_DEFAULT_CTX, (void *)fout, logger);
 
     if (opt_given(o, "version")) {
-        print(PJ_LOG_NONE, "%s: %s", o->progname, pj_get_release());
+        fprintf(stdout, "%s: %s\n", o->progname, pj_get_version());
+        free(o);
         return 0;
     }
 

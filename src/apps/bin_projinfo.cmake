@@ -1,4 +1,4 @@
-set(PROJINFO_SRC projinfo.cpp)
+set(PROJINFO_SRC projinfo.cpp emess.cpp)
 
 source_group("Source Files\\Bin" FILES ${PROJINFO_SRC})
 
