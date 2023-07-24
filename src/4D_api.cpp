@@ -2546,7 +2546,6 @@ static char *path_append(char *buf, const char *app, size_t *buf_size) {
 }
 
 static const char *empty = {""};
-static char version[64] = {""};
 static PJ_INFO info = {0, 0, 0, nullptr, nullptr, nullptr, nullptr, 0};
 
 /*****************************************************************************/
@@ -2565,12 +2564,7 @@ PJ_INFO proj_info(void) {
     info.minor = PROJ_VERSION_MINOR;
     info.patch = PROJ_VERSION_PATCH;
 
-    /* A normal version string is xx.yy.zz which is 8 characters
-    long and there is room for 64 bytes in the version string. */
-    snprintf(version, sizeof(version), "%d.%d.%d", info.major, info.minor,
-             info.patch);
-
-    info.version = version;
+    info.version = pj_get_version();
     info.release = pj_get_release();
 
     /* build search path string */
