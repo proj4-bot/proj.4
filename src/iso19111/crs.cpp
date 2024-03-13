@@ -881,8 +881,14 @@ static bool mustAxisOrderBeSwitchedForVisualizationInternal(
     const std::vector<cs::CoordinateSystemAxisNNPtr> &axisList) {
     const auto &dir0 = axisList[0]->direction();
     const auto &dir1 = axisList[1]->direction();
-    if (&dir0 == &cs::AxisDirection::NORTH &&
-        &dir1 == &cs::AxisDirection::EAST) {
+    if ((&dir0 == &cs::AxisDirection::NORTH &&
+         &dir1 == &cs::AxisDirection::EAST) ||
+        (&dir0 == &cs::AxisDirection::EAST &&
+         &dir1 == &cs::AxisDirection::SOUTH) ||
+        (&dir0 == &cs::AxisDirection::SOUTH &&
+         &dir1 == &cs::AxisDirection::WEST) ||
+        (&dir0 == &cs::AxisDirection::WEST &&
+         &dir1 == &cs::AxisDirection::NORTH)) {
         return true;
     }
 

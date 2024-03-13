@@ -4377,6 +4377,29 @@ TEST_F(CApi, proj_normalize_for_visualization_on_crs) {
 
 // ---------------------------------------------------------------------------
 
+TEST_F(CApi, proj_normalize_for_visualization_on_crs_westing_southing) {
+
+    auto P = proj_create(m_ctxt, "EPSG:5513");
+    ObjectKeeper keeper_P(P);
+    ASSERT_NE(P, nullptr);
+    auto Pnormalized = proj_normalize_for_visualization(m_ctxt, P);
+    ObjectKeeper keeper_Pnormalized(Pnormalized);
+    ASSERT_NE(Pnormalized, nullptr);
+    EXPECT_EQ(proj_get_id_code(Pnormalized, 0), nullptr);
+
+    auto cs = proj_crs_get_coordinate_system(m_ctxt, Pnormalized);
+    ASSERT_NE(cs, nullptr);
+    ObjectKeeper keeperCs(cs);
+
+    const char *name = nullptr;
+    ASSERT_TRUE(proj_cs_get_axis_info(m_ctxt, cs, 0, &name, nullptr, nullptr,
+                                      nullptr, nullptr, nullptr, nullptr));
+    ASSERT_NE(name, nullptr);
+    EXPECT_EQ(std::string(name), "Westing");
+}
+
+// ---------------------------------------------------------------------------
+
 TEST_F(CApi, proj_coordoperation_create_inverse) {
 
     auto P = proj_create(
