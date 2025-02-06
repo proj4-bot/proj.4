@@ -503,6 +503,15 @@ int main(int argc, char **argv) {
                 case 's': /* reverse output */
                     reverseout = 1;
                     continue;
+                case '-': /* long option */
+                    if (strcmp(*argv, "--version") == 0) {
+                        (void)fprintf(stdout, "%s: %s\n", emess_dat.Prog_name, pj_get_version());
+                        exit(0);
+                    }
+                    else {
+                      emess(1, "invalid option: %s", *argv);
+                      break;
+                    }
                 default:
                     emess(1, "invalid option: -%c", *arg);
                     break;

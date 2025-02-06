@@ -39,6 +39,7 @@
 
 #include "proj.h"
 #include "proj_internal.h"
+#include "emess.h"
 
 #include <proj/common.hpp>
 #include <proj/coordinateoperation.hpp>
@@ -1396,6 +1397,11 @@ int main(int argc, char **argv) {
         std::cerr << pj_get_release() << std::endl;
         usage();
     }
+    
+    if ((emess_dat.Prog_name = strrchr(*argv, '/')) != nullptr)
+        ++emess_dat.Prog_name;
+    else
+        emess_dat.Prog_name = *argv;
 
     if (argc >= 3 && strcmp(argv[1], "completion") == 0) {
         suggestCompletion(std::vector<std::string>(argv + 3, argv + argc));
@@ -1444,7 +1450,12 @@ int main(int argc, char **argv) {
 
     for (int i = 1; i < argc; i++) {
         std::string arg(argv[i]);
-        if (arg == "-o" && i + 1 < argc) {
+        if (arg == "--version")
+        {
+          std::cout << emess_dat.Prog_name << ": " << pj_get_version() << std::endl;
+          std::exit(0);
+        }
+        else if (arg == "-o" && i + 1 < argc) {
             outputSwitchSpecified = true;
             i++;
             const auto formats(split(argv[i], ','));
