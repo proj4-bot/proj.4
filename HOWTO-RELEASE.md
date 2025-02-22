@@ -213,6 +213,7 @@ version numbers in the files.
 - src/proj.h:           Update PROJ_VERSION_MAJOR, PROJ_VERSION_MINOR and
                         PROJ_VERSION_PATCH.
 - src/release.cpp:      Update date to the scheduled release date.
+                        Possibly update the wisdom of the day sentence.
 - CMakeLists.txt:       Update proj_version()
 - docs/source/conf.py:  Update version number
 
