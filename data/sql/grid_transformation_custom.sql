@@ -151,3 +151,25 @@ INSERT INTO "usage" VALUES(
     'EPSG','3278', -- area of use: Mexico - onshore
     'EPSG','1024'  -- unknown
 );
+
+-- Latvia
+
+INSERT INTO "grid_transformation" VALUES(
+    'PROJ','EPSG_4949_TO_EPSG_7700','LKS-92 to Latvia 2000 height',
+    NULL,
+    'EPSG','9665','Geographic3D to GravityRelatedHeight (gtx)',
+    'EPSG','4949', -- source CRS (LKS-92)
+    'EPSG','7700', -- target CRS (Latvia 2000 height)
+    NULL,
+    'EPSG','8666','Geoid (height correction) model file','lv_lgia_lv14.tif',
+    NULL,NULL,NULL,NULL,NULL,NULL,NULL,0);
+
+INSERT INTO "usage" VALUES(
+    'PROJ',
+    'EPSG_4949_TO_EPSG_7700_USAGE',
+    'grid_transformation',
+    'PROJ',
+    'EPSG_4949_TO_EPSG_7700',
+    'EPSG','3268', -- area of use: Latvia - onshore
+    'EPSG','1024'  -- unknown
+);

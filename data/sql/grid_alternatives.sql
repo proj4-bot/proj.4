@@ -246,6 +246,9 @@ VALUES
 -- jp_gsi - Geospatial Information Authority of Japan
 ('jp_gsi_gsigeo2011.tif','jp_gsi_gsigeo2011.tif',NULL,'GTiff','geoid_like',0,NULL,'https://cdn.proj.org/jp_gsi_gsigeo2011.tif',1,1,NULL),
 
+-- lv_lgia - Latvian Geospatial Information Agency
+('lv_lgia_lv14.tif','lv_lgia_lv14.tif',NULL,'GTiff','geoid_like',0,NULL,'https://cdn.proj.org/lv_lgia_lv14.tif',1,1,NULL),
+
 -- mx_inegi - Instituto Nacional de Estadística, Geografía e Informática (INEGI) Mexico
 ('GGM10.txt','mx_inegi_ggm10.tif',NULL,'GTiff','geoid_like',0,NULL,'https://cdn.proj.org/mx_inegi_ggm10.tif',1,1,NULL),
 
